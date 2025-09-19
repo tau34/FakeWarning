@@ -101,7 +101,7 @@
       </b>
     </div>
     <div id="dup" class="popup" style="background-color: #fff; width: 508px; bottom: 10px; left: 10px; padding-top: 8px; padding-right: 8px; z-index: 9990;">
-      <img src="../FakeWarning/img.png" width="500">
+      <img src="../FakeWarning/img.png" width="500" style="user-select: none;">
       <div style="background-color: #000; opacity: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9991;"></div>
     </div>
   </body>
@@ -120,13 +120,15 @@
       tryPlay();
       let width = window.innerWidth;
       let height = window.innerHeight;
-      setInterval(function () {
+      const append = function () {
         document.body.innerHTML += `
           <div id="dup" class="popup" style="background-color: #fff; width: 508px; top: ${Math.random() * (height - 300)}px; left: ${Math.random() * (width - 508)}px; padding-top: 8px; padding-right: 8px; z-index: 9990;">
-            <img src="../FakeWarning/img.png" width="500">
+            <img src="../FakeWarning/img.png" width="500" style="user-select: none;">
             <div style="background-color: #000; opacity: 0; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 9991;"></div>
           </div>`;
-      }, 4000);
+      };
+      setInterval(append, 4000);
+      document.body.onclick = append;
     }
   </script>
 </html>
